@@ -2,7 +2,8 @@ import time
 import cv2
 import os
 from datetime import datetime
-from base_camera import BaseCamera
+from CitraProject.base_camera import BaseCamera
+
 
 class Camera(BaseCamera):
     # video_source = "http://192.168.1.5:8080/video"
@@ -14,7 +15,7 @@ class Camera(BaseCamera):
 
     @staticmethod
     def frames():
-        camera = cv2.VideoCapture(Camera.video_source)
+        camera = cv2.VideoCapture(Camera.video_source, cv2.CAP_DSHOW)
         frame_width = int(camera.get(3))
         frame_height = int(camera.get(4))
 
@@ -49,9 +50,9 @@ class Camera(BaseCamera):
             delta_frame = cv2.absdiff(first_frame, gray)
             thresh_data = cv2.threshold(delta_frame, 30, 255, cv2.THRESH_BINARY)[1]
             thresh_data = cv2.dilate(thresh_data, None, iterations=0)
-            (_, cnts, _) = cv2.findContours(thresh_data.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            contours, hierarchy = cv2.findContours(thresh_data.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-            for contour in cnts:
+            for contour in contours:
                 if cv2.contourArea(contour) < 1000:
                     continue
                 status = 1
@@ -66,7 +67,7 @@ class Camera(BaseCamera):
                     now = datetime.now();
                     date_time = now.strftime("%d-%m-%Y_%I-%M-%S_%p");
                     file_name = ''.join([os.getcwd(), "\\static\\videos\\", date_time, '.mp4'])
-                    out = cv2.VideoWriter(file_name, cv2.VideoWriter_fourcc(*'MP4V'), 10,
+                    out = cv2.VideoWriter(file_name, cv2.VideoWriter_fourcc(*'H264'), 20.0,
                                           (frame_width, frame_height))
                 is_recording = True
 

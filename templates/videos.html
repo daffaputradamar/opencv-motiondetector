@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Title</title>
-</head>
-<body>
+  </head>
+  <body>
     <section>
       {% for video in videos %}
       <video width="320" height="240" controls>
-        <source src="{{ url_for('static', filename='videos/' + video) }}" type="video/mp4">
+        <source
+          src="{{ url_for('static', filename='videos/' + video) }}"
+          type="video/mp4"
+        />
         Your browser does not support the video tag.
       </video>
       {% endfor %}
     </section>
-</body>
+  </body>
 </html>
