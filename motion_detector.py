@@ -1,7 +1,7 @@
-import cv2, time
+import cv2, time, os
 from datetime import datetime
 
-video = cv2.VideoCapture("http://192.168.1.5:8080/video")
+video = cv2.VideoCapture(0)
 
 first_frame = None
 status_list = [None, None]
@@ -49,7 +49,8 @@ while True:
         if out is None:
             now = datetime.now();
             date_time = now.strftime("%d-%m-%Y_%I-%M-%S_%p");
-            file_name = ''.join([date_time, '.avi'])
+            file_name = ''.join([os.getcwd(), "\\videos\\", date_time, '.avi'])
+            print(file_name)
             out = cv2.VideoWriter(file_name, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 10,
                                   (frame_width, frame_height))
         is_recording = True

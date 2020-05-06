@@ -1,6 +1,6 @@
 from flask import Flask, Response, render_template
 from camera import Camera
-import cv2
+import os
 
 app = Flask(__name__)
 
@@ -18,6 +18,11 @@ def gen(camera):
 def video_feed():
     return Response(gen(Camera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route('/videos')
+def portfolio():
+    videos = os.listdir(os.path.join(app.static_folder, "videos"))
+    return render_template('videos.html', videos=videos)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)

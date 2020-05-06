@@ -1,10 +1,12 @@
 import time
 import cv2
+import os
 from datetime import datetime
 from base_camera import BaseCamera
 
 class Camera(BaseCamera):
-    video_source = "http://192.168.1.5:8080/video"
+    # video_source = "http://192.168.1.5:8080/video"
+    video_source = 0
 
     @staticmethod
     def set_video_source(source):
@@ -63,8 +65,8 @@ class Camera(BaseCamera):
                 if out is None:
                     now = datetime.now();
                     date_time = now.strftime("%d-%m-%Y_%I-%M-%S_%p");
-                    file_name = ''.join([date_time, '.avi'])
-                    out = cv2.VideoWriter(file_name, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 10,
+                    file_name = ''.join([os.getcwd(), "\\static\\videos\\", date_time, '.mp4'])
+                    out = cv2.VideoWriter(file_name, cv2.VideoWriter_fourcc(*'MP4V'), 10,
                                           (frame_width, frame_height))
                 is_recording = True
 
