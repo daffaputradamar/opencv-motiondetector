@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600&display=swap");
+
+h1.title,
+h4.subtitle {
+  text-align: center;
+  letter-spacing: 3px;
+  padding-top: 80px;
+  margin-bottom: 4px;
+  font-size: 35px;
+  font-weight: 600;
+  font-family: "Baloo 2", cursive;
+  color: #3686cc;
+}
+
+span.b {
+  color: #292929;
+}
+
+span.y {
+  color: #bbb228;
+}
+
+h4.subtitle {
+  letter-spacing: 3px;
+  padding-top: 0px;
+  padding-bottom: 30px;
+  font-size: 25px;
+  font-weight: 400;
+  color: #9dc0df;
+}
+
+.col-tengah {
+  text-align: center;
+  padding: 0px;
+}
+
+.img-fluid {
+  border: 3px solid #292929;
+  border-radius: 3px;
+}
+
+.col-img,
+.col-img2 {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background-image: url("/static/image/hand_left.png");
+  background-position: left top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 0px;
+}
+
+.col-img2 {
+  background-image: url("/static/image/hand_right.png");
+  background-position: right top;
+}
+
+.button-area {
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 35px;
+}
+
+.button {
+  background-color: #ffffff;
+  border-color: #3686cc solid 4px;
+  border: none;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.button a {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #292929;
+  text-decoration: none;
+}
+
+/* Outline In */
+.hvr-outline-in {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+}
+.hvr-outline-in:before {
+  cursor: pointer;
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  border: #3686cc solid 3px;
+  top: -16px;
+  right: -16px;
+  bottom: -16px;
+  left: -16px;
+  opacity: 0;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: top, right, bottom, left;
+  transition-property: top, right, bottom, left;
+}
+.hvr-outline-in:hover:before,
+.hvr-outline-in:focus:before,
+.hvr-outline-in:active:before {
+  top: 0px;
+  right: 0px;
+  bottom: 3px;
+  left: 0px;
+  opacity: 1;
+}
+
+/* Underline From Left */
+.hvr-underline-from-left {
+  padding-bottom: 5px;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  overflow: hidden;
+  transition-timing-function: linear;
+}
+.hvr-underline-from-left:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #3686cc;
+  height: 2px;
+  -webkit-transition-property: right;
+  transition-property: right;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-outline-in:hover .hvr-underline-from-left:before {
+  right: 100%;
+}

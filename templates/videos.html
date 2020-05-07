@@ -1,20 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Title</title>
-  </head>
-  <body>
-    <section>
-      {% for video in videos %}
-      <video width="320" height="240" controls>
-        <source
-          src="{{ url_for('static', filename='videos/' + video) }}"
-          type="video/mp4"
-        />
-        Your browser does not support the video tag.
-      </video>
-      {% endfor %}
-    </section>
-  </body>
-</html>
+{% extends 'layouts.html' %} {% block body %}
+<h1 class="title">
+  List Video
+</h1>
+<hr />
+<div class="row">
+  {% for video in videos %}
+  <div class="col-sm-4 col-md-4">
+    <video class="embed-responsive-item" width="320" height="240" controls>
+      <source
+        src="{{ url_for('static', filename='videos/' + video) }}"
+        type="video/mp4"
+      />
+      Your browser does not support the video tag.
+    </video>
+    {% if loop.index % 3 == 0 %}
+  </div>
+  <div class="row">
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+
+<div class="button-area">
+  <div class="button hvr-outline-in">
+    <a class="hvr-underline-from-left" href="/">Back Streaming</a>
+  </div>
+</div>
+{% endblock %}

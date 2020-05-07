@@ -57,7 +57,7 @@ class Camera(BaseCamera):
                     continue
                 status = 1
                 (x, y, w, h) = cv2.boundingRect(contour)
-                cv2.rectangle(frame_detected, (x, y), (x + w, y + h), (0, 255, 0), 3)
+                cv2.rectangle(frame_detected, (x, y), (x + w, y + h), (245, 135, 66), 3)
 
             status_list.append(status)
             status_list = status_list[-2:]

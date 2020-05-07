@@ -26,6 +26,7 @@ def video_feed():
 @app.route('/videos')
 def portfolio():
     videos = os.listdir(os.path.join(app.static_folder, "videos"))
+    videos.sort(reverse=True)
     return render_template('videos.html', videos=videos)
 
 
