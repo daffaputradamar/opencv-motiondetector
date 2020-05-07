@@ -62,14 +62,14 @@ class Camera(BaseCamera):
             status_list.append(status)
             status_list = status_list[-2:]
 
-            if status_list[-1] == 1 and status_list[-2] == 0:
-                if out is None:
-                    now = datetime.now();
-                    date_time = now.strftime("%d-%m-%Y_%I-%M-%S_%p");
-                    file_name = ''.join([os.getcwd(), "\\static\\videos\\", date_time, '.mp4'])
-                    out = cv2.VideoWriter(file_name, cv2.VideoWriter_fourcc(*'H264'), 20.0,
-                                          (frame_width, frame_height))
-                is_recording = True
+            # if status_list[-1] == 1 and status_list[-2] == 0:
+            #     if out is None:
+            #         now = datetime.now();
+            #         date_time = now.strftime("%d-%m-%Y_%I-%M-%S_%p");
+            #         file_name = ''.join([os.getcwd(), "\\static\\videos\\", date_time, '.mp4'])
+            #         out = cv2.VideoWriter(file_name, cv2.VideoWriter_fourcc(*'H264'), 20.0,
+            #                               (frame_width, frame_height))
+            #     is_recording = True
 
             if status_list[-1] == 0 and status_list[-2] == 1:
                 start_time = time.time()
