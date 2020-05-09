@@ -2,12 +2,12 @@ import time
 import cv2
 import os
 from datetime import datetime
-from CitraProject.base_camera import BaseCamera
+from base_camera import BaseCamera
 
 
 class Camera(BaseCamera):
-    # video_source = "http://192.168.1.5:8080/video"
-    video_source = 0
+    # disesuaikan dengan ip camera masing"
+    video_source = "http://192.168.100.19:8080/video"
 
     @staticmethod
     def set_video_source(source):
@@ -15,7 +15,7 @@ class Camera(BaseCamera):
 
     @staticmethod
     def frames():
-        camera = cv2.VideoCapture(Camera.video_source, cv2.CAP_DSHOW)
+        camera = cv2.VideoCapture(Camera.video_source)
         frame_width = int(camera.get(3))
         frame_height = int(camera.get(4))
 
@@ -62,14 +62,15 @@ class Camera(BaseCamera):
             status_list.append(status)
             status_list = status_list[-2:]
 
-            # if status_list[-1] == 1 and status_list[-2] == 0:
-            #     if out is None:
-            #         now = datetime.now();
-            #         date_time = now.strftime("%d-%m-%Y_%I-%M-%S_%p");
-            #         file_name = ''.join([os.getcwd(), "\\static\\videos\\", date_time, '.mp4'])
-            #         out = cv2.VideoWriter(file_name, cv2.VideoWriter_fourcc(*'H264'), 20.0,
-            #                               (frame_width, frame_height))
-            #     is_recording = True
+# untuk merekam
+            if status_list[-1] == 1 and status_list[-2] == 0:
+                if out is None:
+                    now = datetime.now();
+                    date_time = now.strftime("%d-%m-%Y_%I-%M-%S_%p");
+                    file_name = ''.join([os.getcwd(), "\\static\\videos\\", date_time, '.mp4'])
+                    out = cv2.VideoWriter(file_name, cv2.VideoWriter_fourcc(*'H264'), 20.0,
+                                          (frame_width, frame_height))
+                is_recording = True
 
             if status_list[-1] == 0 and status_list[-2] == 1:
                 start_time = time.time()
