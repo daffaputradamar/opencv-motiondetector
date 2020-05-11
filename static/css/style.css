@@ -2,10 +2,7 @@
 
 h1.title,
 h4.subtitle {
-  text-align: center;
   letter-spacing: 3px;
-  padding-top: 80px;
-  margin-bottom: 4px;
   font-size: 35px;
   font-weight: 600;
   font-family: "Baloo 2", cursive;

@@ -2,22 +2,26 @@
 <!--<h1 class="title">-->
 <!--  List Video-->
 <!--</h1>-->
-<h1 class="title">
-  List <span class="y">Video</span>
-  <img
-          width="60" height="40" src="/static/image/logo.png"
-    />
+<h1 class="title d-flex flex-column align-items-center justify-content-center mb-0">
+    <img width="60" height="40" class="mt-3 mb-3" src="{{ url_for('static',filename='image/logo.png') }}"/>
+    <span>List<span class="y">Video</span></span>
 </h1>
 <hr />
 <div class="row">
   {% for video in videos %}
   <div class="col-sm-4 col-md-4">
-    <video class="embed-responsive-item" width="320" height="240" controls>
+    <video id="{{video}}" class="embed-responsive-item" width="320" height="240" controls>
       <source
         src="{{ url_for('static', filename='videos/' + video) }}"
         type="video/mp4"
       />
-      Your browser does not support the video tag.
+      <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a
+      web browser that
+      <a href="https://videojs.com/html5-video-support/" target="_blank"
+        >supports HTML5 video</a
+      >
+    </p>
     </video>
     {% if loop.index % 3 == 0 %}
   </div>
