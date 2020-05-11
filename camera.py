@@ -4,7 +4,6 @@ import os
 from datetime import datetime
 from base_camera import BaseCamera
 
-
 class Camera(BaseCamera):
     # disesuaikan dengan ip camera masing"
     video_source = "http://192.168.100.19:8080/video"
@@ -62,7 +61,7 @@ class Camera(BaseCamera):
             status_list.append(status)
             status_list = status_list[-2:]
 
-# untuk merekam
+            # untuk merekam
             if status_list[-1] == 1 and status_list[-2] == 0:
                 if out is None:
                     now = datetime.now();
